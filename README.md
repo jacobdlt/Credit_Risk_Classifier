@@ -8,7 +8,7 @@ Using lending data that included information about borrowers such as loan size, 
 
 1.) I first read the lending data into a Pandas dataframe from the .csv file and created features (X) and labels (y) sets from the columns, with the loan_status column being the label and the rest features. 
 
-2.) Secondly, I used the .value_counts function to determine the balance of the label variable. Healthy loans (0)heavily outnumbered high risk-loans (1):
+2.) Secondly, I used the .value_counts function to determine the balance of the label variable. Healthy loans (0) heavily outnumbered high-risk loans (1):
 
 ![image of .value_counts](/code/value_counts.jpg)
 
@@ -21,19 +21,23 @@ Lastly, I repeated this process from step 2 after using RandomOverSampler to ove
 
 ## Results
 
-* Machine Learning Model 1:
+* Model 1:
 
 ![image of model 1 results](/code/model1_results.jpg)
 
 
-* Machine Learning Model 2:
+* Model 2:
 
 ![image of model 2 results](/code/model2_results.jpg)
 
 ## Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+Both models had perfect precision for healthly loans, however the oversampled model (Model 2) was slightly less precise at predicting high-risk loans (84% vs Model 1's 85%).
 
-If you do not recommend any of the models, please justify your reasoning.
+Model 2 was more accurate with a 99% accuracy score compared to Model 1's 95%.
+
+Recall for model 1 was also worse for high-risk loans (91%) vs Model 2 (99%).
+
+In this case, being able to predict high-risk loans is more important than predicting healthy ones. Failing to categorize loans as high-risk could lead to unpreparedness in the case of defaults and therefore potential liquidity / solvency risks for the business. This could also lead to lending to unqualified borrowers
+
+With this in mind, I would recommend the use of Model 2 exclusively since accuracy and recall were better and precision essentially the same as Model 1. 
